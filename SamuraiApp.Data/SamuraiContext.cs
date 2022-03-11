@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using SamuraiApp.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SamuraiApp.Data
 {
@@ -14,13 +9,14 @@ namespace SamuraiApp.Data
         public DbSet<Samurai> Samurais { get; set; }
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Battle> Battles { get; set; }
-        public DbSet<Horse> Horses{ get; set; }
+        public DbSet<Horse> Horses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseModel(CompiledModels.SamuraiContextModel.Instance)
-                .UseSqlServer("Data Source=localhost;Initial Catalog=SamuraiApp;Integrated Security=True");
+                .UseSqlServer("Data Source=localhost;Initial Catalog=SamuraiApp;Integrated Security=True")
+                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+                .EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

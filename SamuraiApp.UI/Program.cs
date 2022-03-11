@@ -10,8 +10,9 @@ class Program
     {
         _context.Database.EnsureCreated();
         GetSamurais("Before Add");
-        AddSamurai();
-        GetSamurais("After Add");
+        //AddSamurai();
+        //GetSamurais("After Add");
+        //AddQuoteToExistingSamurai();
         Console.Write("Press any key...");
         Console.ReadKey();
     }
@@ -32,5 +33,30 @@ class Program
         {
             Console.WriteLine(samurai.Name);
         }
+    }
+
+    private static void InsertNewSamuraiWithAQuote()
+    {
+        var samurai = new Samurai
+        {
+            Name = "Zoro",
+            Quotes = new List<Quote> {
+                new Quote{ Text = "I've come to save you Nami"}
+            }
+        };
+
+        _context.Samurais.Add(samurai);
+        _context.SaveChanges();
+    }
+
+    private static void AddQuoteToExistingSamurai()
+    {
+        var samurai = _context.Samurais.FirstOrDefault();
+        samurai.Quotes.Add(new Quote
+        {
+            Text = "Hey Nami, I miss you very much!"
+        });
+
+        _context.SaveChanges();
     }
 }
