@@ -1,4 +1,5 @@
-﻿using SamuraiApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SamuraiApp.Data;
 using SamuraiApp.Domain;
 
 namespace SamuraiApp.UI;
@@ -9,7 +10,8 @@ class Program
     static void Main(string[] args)
     {
         _context.Database.EnsureCreated();
-        GetSamurais("Before Add");
+        //AddHorseToSamurai("Zoro");
+        GetSamurais("Samurais: ");
         //AddSamurai();
         //GetSamurais("After Add");
         //AddQuoteToExistingSamurai();
@@ -26,13 +28,19 @@ class Program
 
     private static void GetSamurais(string text)
     {
-        var samurais = _context.Samurais.ToList();
+        var samurais = _context.Samurais.Include(s => s.Horse).ToList();
         Console.WriteLine($"{text}: Samurai count is {samurais.Count}");
 
         foreach (var samurai in samurais)
         {
             Console.WriteLine(samurai.Name);
         }
+    }
+
+    private static void GetSamuraiWithName(string name)
+    {
+        var samurai = _context.Samurais.SingleOrDefault(x => x.Name.Contains(name));
+        Console.WriteLine(samurai.Id);
     }
 
     private static void InsertNewSamuraiWithAQuote()
@@ -59,4 +67,15 @@ class Program
 
         _context.SaveChanges();
     }
+
+    private static void AddHorseToSamurai(string samuraiName)
+    {
+        var samurai = _context.Samurais.Where(s => s.Name.Contains(samuraiName)).FirstOrDefault();
+        samurai.Horse = new Horse
+        {
+            Name = "Pegasus"
+        };
+        _context.SaveChanges();
+    }
+
 }
