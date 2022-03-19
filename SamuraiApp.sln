@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamuraiApp.Domain", "SamuraiApp.Domain\SamuraiApp.Domain.csproj", "{B4A2B679-787F-4BA7-ADFB-A674E90CAC17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.Domain", "SamuraiApp.Domain\SamuraiApp.Domain.csproj", "{B4A2B679-787F-4BA7-ADFB-A674E90CAC17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamuraiApp.Data", "SamuraiApp.Data\SamuraiApp.Data.csproj", "{5B599A31-6B7D-424F-AF77-E97C3A93ADD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.Data", "SamuraiApp.Data\SamuraiApp.Data.csproj", "{5B599A31-6B7D-424F-AF77-E97C3A93ADD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamuraiApp.UI", "SamuraiApp.UI\SamuraiApp.UI.csproj", "{17D4A181-484E-41E9-B77F-7B498BAF3DA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.UI", "SamuraiApp.UI\SamuraiApp.UI.csproj", "{17D4A181-484E-41E9-B77F-7B498BAF3DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamuraiApp.Migrator", "SamuraiApp.Migrator\SamuraiApp.Migrator.csproj", "{E638B5BA-3BB9-4C33-B71C-3E05F4BBCBF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{17D4A181-484E-41E9-B77F-7B498BAF3DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17D4A181-484E-41E9-B77F-7B498BAF3DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17D4A181-484E-41E9-B77F-7B498BAF3DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E638B5BA-3BB9-4C33-B71C-3E05F4BBCBF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E638B5BA-3BB9-4C33-B71C-3E05F4BBCBF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E638B5BA-3BB9-4C33-B71C-3E05F4BBCBF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E638B5BA-3BB9-4C33-B71C-3E05F4BBCBF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
