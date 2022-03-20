@@ -9,9 +9,9 @@ class Program
     private static SamuraiContext _context = new SamuraiContext();
     static void Main(string[] args)
     {
-        _context.Database.EnsureCreated();
         //AddHorseToSamurai("Zoro");
-        GetSamurais("Samurais: ");
+        //GetSamurais("Samurais: ");
+        GetSamuraiStats();
         //AddSamurai();
         //GetSamurais("After Add");
         //AddQuoteToExistingSamurai();
@@ -24,6 +24,16 @@ class Program
         var samurai = new Samurai { Name = "Sampson" };
         _context.Samurais.Add(samurai);
         _context.SaveChanges();
+    }
+
+    private static void GetSamuraiStats()
+    {
+        var samuraiBattleStats = _context.SamuraiBattleStats.ToList();
+
+        foreach (var item in samuraiBattleStats)
+        {
+            Console.WriteLine($"{item.Name} | {item.EarliestBattle} | {item.NumberOfBattles}");
+        }
     }
 
     private static void GetSamurais(string text)
