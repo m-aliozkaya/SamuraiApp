@@ -17,7 +17,7 @@ namespace SamuraiApp.Data.Migrations
                   FROM Battles
                   WHERE Battles.Id IN(SELECT BattleId
                                      FROM BattleSamurai
-                                    WHERE SamuraiId = '@samuraiId')
+                                    WHERE SamuraiId = @samuraiId)
                   ORDER BY StartDate
                   RETURN @ret
                 END");
