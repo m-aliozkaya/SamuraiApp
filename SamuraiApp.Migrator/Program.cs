@@ -1,11 +1,20 @@
-﻿using SamuraiApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using SamuraiApp.Data;
 using SamuraiApp.Domain;
 
-var context = new SamuraiContext();
-var isDatabaseCreated = context.Database.EnsureCreated();
+using var context = new SamuraiContext();
+var isDatabaseExist = context.Database.GetService<IRelationalDatabaseCreator>().Exists();
 
-if (isDatabaseCreated)
+if (isDatabaseExist)
 {
+    Console.WriteLine("Database is already exist!");
+}
+else
+{
+    await context.Database.MigrateAsync();
+
     var samuraiList = new List<Samurai>
     {
         new Samurai{ Name = "Hattori Hanzō", Horse = new Horse {Name = "Deeno" } },
@@ -47,10 +56,6 @@ if (isDatabaseCreated)
     await context.SaveChangesAsync();
 
     Console.WriteLine("Database initialized.");
-}
-else
-{
-    Console.WriteLine("Database is already exist!");
 }
 
 Console.WriteLine("Press ENTER to exit...");
