@@ -12,12 +12,9 @@ namespace SamuraiApp.Data
         public DbSet<Horse> Horses { get; set; }
         public DbSet<SamuraiBattleStats> SamuraiBattleStats { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public SamuraiContext(DbContextOptions<SamuraiContext> options) : base(options)
         {
-            optionsBuilder
-                .UseSqlServer("Data Source=localhost;Initial Catalog=SamuraiApp;Integrated Security=True")
-                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
-                .EnableSensitiveDataLogging();
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
