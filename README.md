@@ -1,1 +1,1 @@
-SamuraiApp
+SamuraiApp Project
