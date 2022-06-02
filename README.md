@@ -1,1 +1,3 @@
 SamuraiApp Project
+
+EFCore Project
